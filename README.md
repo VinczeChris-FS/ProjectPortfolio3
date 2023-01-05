@@ -29,10 +29,9 @@ Place all of your environment variables inside the vim window, then save. After 
 
 After yarn has finished installing all of your `node_modules` you can now run the project. You will need to open two different bash sessions. One for the frontend app and one for the backend Express application.
 
-**To Run Nuxt.js (frontend)**
+**To Run React.js (frontend)**
 
-    cd nuxt
-    yarn dev
+    npm start
 
 **To Run Express (backend)**
 
