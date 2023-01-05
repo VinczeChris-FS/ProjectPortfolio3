@@ -47,3 +47,16 @@ The links to the project are as follows:
 - [http://localhost:3001/spotify/v1/status](http://localhost:3001/spotify/v1/status) - Endpoint to check the status of our application's JWT. Returns true if a valid JWT exists. False otherwise.
 - [http://localhost:3001/spotify/v1/login](http://localhost:3001/spotify/v1/login) - Endpoint request a new JWT from Spotify using the authentication workflow
 - [http://localhost:3001/spotify/v1/search](http://localhost:3001/spotify/v1/search) - Endpoint for a general/global search to Spotify. Returns JSON of all results.
+
+## Misc
+
+Since I have two GitHub accounts, I needed to change the email for this repository to commit with the correct account
+
+To set the Git email for a single repository:
+
+    git config user.email "VinczeChris-FS"
+
+To confirm:
+
+    git config user.email
+    > VinczeChris-FS
