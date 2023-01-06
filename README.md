@@ -6,7 +6,7 @@ Instructor: Justin Workman
 
 ## Project Overview
 
-This month you will be building out a music search app. You will integrate your project with Spotify's REST Web API.
+This month you will be building out a music search app. You will integrate your project with the [Spotify Web API](https://developer.spotify.com/documentation/web-api/).
 
 ## Prerequisites
 
@@ -50,7 +50,7 @@ The links to the project are as follows:
 
 ## Misc
 
-Since I have two GitHub accounts, I needed to change the email for this repository to commit with the correct account
+Since I have two GitHub accounts, I needed to change the email for this repository to commit with the correct account.
 
 To set the Git email for a single repository:
 
