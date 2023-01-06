@@ -6,7 +6,7 @@ Instructor: Justin Workman
 
 ## Project Overview
 
-This month you will be building out a music search app. You will integrate your project with the [Spotify Web API](https://developer.spotify.com/documentation/web-api/).
+This project is a music search app that performs a global search for Artists, Albums, and Tracks from Spotify and uses the [Spotify Web API](https://developer.spotify.com/documentation/web-api/). This project contains both a front-end and back-end and uses OAuth 2.0 JSON Web Tokens (JWTs) for user authorization.
 
 ## Prerequisites
 
