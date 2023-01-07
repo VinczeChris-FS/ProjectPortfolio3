@@ -6,14 +6,13 @@ Instructor: Justin Workman
 
 ## Project Overview
 
-This project is a music search app that performs a global search for Artists, Albums, and Tracks from Spotify and uses the [Spotify Web API](https://developer.spotify.com/documentation/web-api/). This project contains both a front-end and back-end and uses OAuth 2.0 JSON Web Tokens (JWTs) for user authorization.
+This project is a music search app that performs a global search for Artists, Albums, and Tracks from Spotify and uses the [Spotify Web API](https://developer.spotify.com/documentation/web-api/). This project contains both a front-end and back-end and uses OAuth 2.0 JSON Web Tokens (JWTs) for user authorization.I
 
 ## Prerequisites
 
 - NodeJS >= v16.16.0
 - NPM >= v8.11.0
-- Brew >= v3.6.14 (if MacOS)
-- MySQL Server >= v8.0.29
+- MongoDB Compass >= v1.33.1
 - Chrome/Firefox/Safari/Edge >= Latest 2 major versions
 
 ## Getting Started
@@ -28,6 +27,18 @@ Place all of your environment variables inside the vim window, then save. After 
     yarn
 
 After yarn has finished installing all of your `node_modules` you can now run the project. You will need to open two different bash sessions. One for the frontend app and one for the backend Express application.
+
+### Install dependencies
+
+```
+npm install express dotenv mongoose
+```
+
+### Install dev dependencies
+
+```
+npm install install nodemon -D
+```
 
 **To Run React.js (frontend)**
 
