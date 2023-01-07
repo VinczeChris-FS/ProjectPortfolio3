@@ -42,11 +42,18 @@ npm install install nodemon -D
 
 **To Run React.js (frontend)**
 
-    npm start
+```
+npm start
+```
 
 **To Run Express (backend)**
 
-    yarn watch
+To run local server, first cd into _api_ folder.
+
+```
+cd api
+npm run dev
+```
 
 ## Links
 
