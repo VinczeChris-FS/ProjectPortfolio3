@@ -34,16 +34,27 @@ Edit Settings > Redirect URI `https://localhost:3000`
 npx create-react-app
 ```
 
-**To Run React.js (front-end)**
+### To Run React.js (front-end)
+
+To run local React app, first cd into _reactjs_ folder.
 
 ```
+cd reactjs
 npm start
+```
+
+---
+
+### Initialize Node.js
+
+```
+npm init -y
 ```
 
 ### Install Node.js back-end dependencies
 
 ```
-npm install express dotenv mongoose
+npm install express dotenv cors spotify-web-api-node mongoose
 ```
 
 ### Install Node.js back-end dev dependencies
@@ -52,7 +63,7 @@ npm install express dotenv mongoose
 npm install install nodemon -D
 ```
 
-**To Run Express (back-end)**
+### To Run Express (back-end)
 
 To run local server, first cd into _api_ folder.
 
@@ -71,6 +82,15 @@ The links to the project are as follows:
 - [http://localhost:3001/spotify/v1/status](http://localhost:3001/spotify/v1/status) - Endpoint to check the status of our application's JWT. Returns true if a valid JWT exists. False otherwise.
 - [http://localhost:3001/spotify/v1/login](http://localhost:3001/spotify/v1/login) - Endpoint request a new JWT from Spotify using the authentication workflow
 - [http://localhost:3001/spotify/v1/search](http://localhost:3001/spotify/v1/search) - Endpoint for a general/global search to Spotify. Returns JSON of all results.
+
+## Resources
+
+- [Spotify Web API Documentation](https://developer.spotify.com/documentation/web-api/)
+- [Spotify for Developers - Authorization Code Flow](https://developer.spotify.com/documentation/general/guides/authorization/code-flow/)
+- [Adding Custom Environment Variables](https://create-react-app.dev/docs/adding-custom-environment-variables/)
+- [Using .env File in ReactJS](https://medium.com/how-to-react/using-env-file-in-react-js-b2714235e77e)
+- [Spotify Web API Node](https://www.npmjs.com/package/spotify-web-api-node)
+- [Spotify Web API Node on GitHub](https://github.com/thelinmichael/spotify-web-api-node#installation)
 
 ## Misc
 
