@@ -34,6 +34,12 @@ Edit Settings > Redirect URI `https://localhost:3000`
 npx create-react-app
 ```
 
+### Install React dependencies
+
+```
+npm install axios
+```
+
 ### To Run React.js (front-end)
 
 To run local React app, first cd into _reactjs_ folder.
@@ -89,6 +95,7 @@ The links to the project are as follows:
 - [Spotify for Developers - Authorization Code Flow](https://developer.spotify.com/documentation/general/guides/authorization/code-flow/)
 - [Adding Custom Environment Variables](https://create-react-app.dev/docs/adding-custom-environment-variables/)
 - [Using .env File in ReactJS](https://medium.com/how-to-react/using-env-file-in-react-js-b2714235e77e)
+- [How to Structure React Projects from Beginner to Advanced](https://blog.webdevsimplified.com/2022-07/react-folder-structure/)
 - [Spotify Web API Node](https://www.npmjs.com/package/spotify-web-api-node)
 - [Spotify Web API Node on GitHub](https://github.com/thelinmichael/spotify-web-api-node#installation)
 

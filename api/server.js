@@ -1,13 +1,14 @@
 //* Create Express server
 
-// For Dotenv
-const dotenv = require("dotenv");
-dotenv.config();
-
 // For Express
 const express = require("express");
 const app = express();
+// To parse body data
 app.use(express.json());
+
+// For Dotenv
+const dotenv = require("dotenv");
+dotenv.config();
 
 // For Cors
 const cors = require("cors");
@@ -16,16 +17,14 @@ app.use(cors());
 // Environment variable from .env
 const PORT = process.env.PORT || 3001;
 
-// Route
+// Route for http://localhost:3001/spotify/v1/login
 const loginRouter = require("./routes/login");
+app.use("/spotify/v1/login", loginRouter);
 
 // For http://localhost:3001 test
 app.get("/", (req, res) => {
   res.send("Server is running");
 });
-
-// Route for http://localhost:3001/spotify/v1/login
-app.use("/spotify/v1/login", loginRouter);
 
 // Server
 app.listen(PORT, () => {
