@@ -3,13 +3,27 @@
 import useAuth from "../hooks/useAuth";
 
 const Search = ({ code }) => {
-  const accessToken = useAuth(code);
+  // Get data from useAuth custom hook
+  const [accessToken, refreshToken, tokenType, expiresIn] = useAuth(code);
 
   return (
     <div>
       <h1>Search</h1>
-      <p>Code: {code}</p>
-      <p>Access Token: {accessToken}</p>
+      <p>
+        <strong>Code:</strong> {code}
+      </p>
+      <p>
+        <strong>Access Token:</strong> {accessToken}
+      </p>
+      <p>
+        <strong>Token:</strong> {refreshToken}
+      </p>
+      <p>
+        <strong>Token Type:</strong> {tokenType}
+      </p>
+      <p>
+        <strong>Expires In:</strong> {expiresIn}
+      </p>
     </div>
   );
 };

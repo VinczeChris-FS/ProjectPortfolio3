@@ -33,9 +33,12 @@ router.post("/", (req, res) => {
     .authorizationCodeGrant(code)
     .then((data) => {
       console.log("Access token granted");
-      // console.log(data.body.access_token);
+      // console.log("Data from body: ", data.body);
       res.json({
         accessToken: data.body.access_token,
+        refreshToken: data.body.refresh_token,
+        expiresIn: data.body.expires_in,
+        tokenType: data.body.token_type,
       });
     })
     .catch((error) => {
