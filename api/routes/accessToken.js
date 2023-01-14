@@ -4,9 +4,12 @@ const express = require("express");
 const router = express.Router();
 
 // Get functions from controller
-const { getAccessTokens } = require("../controllers/spotifyController");
+const {
+  getAccessTokens,
+  addAccessToken,
+} = require("../controllers/spotifyController");
 
-// Call function for routes and HTTP methods
-router.route("/").get(getAccessTokens);
+// Call functions for routes and HTTP methods
+router.route("/").get(getAccessTokens).post(addAccessToken);
 
 module.exports = router;
