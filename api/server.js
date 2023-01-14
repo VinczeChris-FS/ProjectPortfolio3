@@ -25,6 +25,10 @@ const PORT = process.env.PORT || 3001;
 const loginRouter = require("./routes/login");
 app.use("/spotify/v1/login", loginRouter);
 
+// Route for http://localhost:3001/spotify/v1/access_token
+const accessTokenRouter = require("./routes/accessToken");
+app.use("/spotify/v1/access_token", accessTokenRouter);
+
 // For http://localhost:3001 test
 app.get("/", (req, res) => {
   res.send("Server is running");
