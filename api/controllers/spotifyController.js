@@ -19,8 +19,9 @@ const getAccessTokens = async (req, res) => {
 // POST /api/v1/access_tokens
 const addAccessToken = async (req, res) => {
   //   res.send("POST access token");
+  console.log("POST access token");
   try {
-    const accessToken = await AccessToken.create(req.body);
+    const accessToken = await AccessToken.create(req.body.data);
     return res.status(201).json(accessToken);
   } catch (err) {
     return res.status(500).json(err);

@@ -9,6 +9,7 @@ const {
   addAccessToken,
 } = require("../controllers/spotifyController");
 
+// Chain route handlers with route()
 // Call functions for routes and HTTP methods
 router.route("/").get(getAccessTokens).post(addAccessToken);
 

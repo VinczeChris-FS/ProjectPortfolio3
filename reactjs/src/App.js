@@ -6,7 +6,7 @@ import "./App.css";
 const code = new URLSearchParams(window.location.search).get("code");
 
 function App() {
-  // If code exists then render Dashboard component, otherwise render Search component
+  // If code exists then render Search component, otherwise render Login component
   return <div>{code ? <Search code={code} /> : <Login />}</div>;
 }
 

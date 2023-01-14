@@ -20,7 +20,6 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   // Get code from request body
   const code = req.body.code;
-
   // Use Spotify Web API Node
   const spotifyWebApi = new SpotifyWebApi({
     // Use dotenv for credentials
@@ -32,7 +31,7 @@ router.post("/", (req, res) => {
   spotifyWebApi
     .authorizationCodeGrant(code)
     .then((data) => {
-      console.log("Access token granted");
+      // console.log("Access token granted");
       // console.log("Data from body: ", data.body);
       res.json({
         accessToken: data.body.access_token,

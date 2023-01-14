@@ -1,17 +1,18 @@
 //* Search page
 
+import axios from "axios";
 import useAuth from "../hooks/useAuth";
 
 const Search = ({ code }) => {
   // Get data from useAuth custom hook
-  const [accessToken, refreshToken, tokenType, expiresIn] = useAuth(code);
+  const [data, accessToken, refreshToken, tokenType, expiresIn] = useAuth(code);
+
+  // Store access token data in database
+  axios.post("http://localhost:3001/spotify/v1/access_token", { data });
 
   return (
     <div>
       <h1>Search</h1>
-      <p>
-        <strong>Code:</strong> {code}
-      </p>
       <p>
         <strong>Access Token:</strong> {accessToken}
       </p>

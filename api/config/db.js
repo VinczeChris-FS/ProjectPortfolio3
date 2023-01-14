@@ -1,5 +1,7 @@
-// Connect to MongoDB database locally through MongoDB Compass
+//* Connect to MongoDB database locally through MongoDB Compass
+
 const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
 
 // Mongoose uses promises so use async/await
 const connectDB = async () => {

@@ -1,4 +1,4 @@
-//* Create Express server
+//* Express server
 
 // For Express
 const express = require("express");
