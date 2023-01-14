@@ -7,7 +7,7 @@ const router = express.Router();
 const {
   getAccessTokens,
   addAccessToken,
-} = require("../controllers/spotifyController");
+} = require("../controllers/accessTokenController");
 
 // Chain route handlers with route()
 // Call functions for routes and HTTP methods
