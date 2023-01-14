@@ -14,6 +14,10 @@ dotenv.config();
 const cors = require("cors");
 app.use(cors());
 
+// Connect to database
+const connectDB = require("./config/db");
+connectDB();
+
 // Environment variable from .env
 const PORT = process.env.PORT || 3001;
 

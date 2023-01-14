@@ -11,8 +11,6 @@ const useAuth = (code) => {
   const [expiresIn, setExpiresIn] = useState(0);
 
   // useEffect hook
-
-  // useEffect hook
   // Authentication to get access token
   // Run every time the code changes
   useEffect(() => {
