@@ -23,7 +23,7 @@ const Search = ({ code }) => {
   const [search, setSearch] = useState("");
   // For array of search queries results objects
   const [searchResults, setSearchResults] = useState([]);
-
+  // View array of returned search results
   console.log(searchResults);
 
   //* useEffect hooks
@@ -46,11 +46,28 @@ const Search = ({ code }) => {
       // setSearchResults(res.body.tracks.items);
       // Limit to 4 with slice()
       // array.slice(startIndex, endIndex not included)
-      // Get artists from items array with map()
+      // Get artists, albums, and songs from items array with map()
+
+      // Artist: res.body.tracks.items[0].artists[0].name
+      // Artist URL: res.body.tracks.items[0].artists[0].external_urls.spotify
+      // Album: res.body.tracks.items[0].album.name
+      // Album URL: res.body.tracks.items[0].album.external_urls.spotify
+      // Album Image: res.body.tracks.items[0].album.images[0].url
+      // Song: res.body.tracks.items[0].name
+      // Song URL: res.body.tracks.items[0].external_urls.spotify
+      // URI for key: res.body.tracks.items[0]uri
+
       setSearchResults(
-        res.body.tracks.items.slice(0, 4).map((track) => {
+        res.body.tracks.items.slice(0, 4).map((item) => {
           return {
-            artist: track.artists[0].name,
+            artist: item.artists[0].name,
+            artist_url: item.artists[0].external_urls.spotify,
+            album: item.album.name,
+            album_image: item.album.images[0].url,
+            album_url: item.album.external_urls.spotify,
+            song: item.name,
+            song_url: item.external_urls.spotify,
+            uri: item.uri,
           };
         })
       );
