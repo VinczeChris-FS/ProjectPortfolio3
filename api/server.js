@@ -21,12 +21,18 @@ connectDB();
 // Environment variable from .env
 const PORT = process.env.PORT || 3001;
 
-// Route for http://localhost:3001/spotify/v1/login
+// Import routes
 const loginRouter = require("./routes/login");
+const refreshRouter = require("./routes/refresh");
+const accessTokenRouter = require("./routes/accessToken");
+
+// Route for http://localhost:3001/spotify/v1/login
 app.use("/spotify/v1/login", loginRouter);
 
+// Route for http://localhost:3001/spotify/v1/refresh
+app.use("/spotify/v1/refresh", refreshRouter);
+
 // Route for http://localhost:3001/spotify/v1/access_token
-const accessTokenRouter = require("./routes/accessToken");
 app.use("/spotify/v1/access_token", accessTokenRouter);
 
 // For http://localhost:3001 test

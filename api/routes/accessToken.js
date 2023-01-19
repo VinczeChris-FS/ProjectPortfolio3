@@ -9,8 +9,11 @@ const {
   addAccessToken,
 } = require("../controllers/accessTokenController");
 
-// Chain route handlers with route()
 // Call functions for routes and HTTP methods
-router.route("/").get(getAccessTokens).post(addAccessToken);
+// Chain route handlers with route()
+// router.route("/").get(getAccessTokens).post(addAccessToken);
+// Alternatively
+router.get("/", getAccessTokens);
+router.post("/", addAccessToken);
 
 module.exports = router;

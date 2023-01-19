@@ -1,30 +1,28 @@
-//* Controller for http://localhost:3001/spotify/v1/login
+//* Controller for http://localhost:3001/spotify/v1/refresh
 
 // For Spotify Web API Node
 const SpotifyWebApi = require("spotify-web-api-node");
 
-// Get access token from Spotify Web API
-const loginSpotify = (req, res) => {
+// Get refresh token from Spotify Web API
+const refreshSpotify = (req, res) => {
   // Get code from request body
-  const code = req.body.code;
+  const refreshToken = req.body.refreshToken;
   // Use Spotify Web API Node
   const spotifyWebApi = new SpotifyWebApi({
     // Use dotenv for credentials
     redirectUri: process.env.REDIRECT_URI,
     clientId: process.env.SPOTIFY_CLIENT_ID,
     clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+    refreshToken: refreshToken,
   });
 
   spotifyWebApi
-    .authorizationCodeGrant(code)
+    .refreshAccessToken()
     .then((data) => {
-      // console.log("Access token granted");
-      // console.log("Data from body: ", data.body);
+      // console.log("Access token refreshed");
       res.json({
         accessToken: data.body.access_token,
-        refreshToken: data.body.refresh_token,
         expiresIn: data.body.expires_in,
-        tokenType: data.body.token_type,
       });
     })
     .catch((error) => {
@@ -32,4 +30,4 @@ const loginSpotify = (req, res) => {
     });
 };
 
-module.exports = { loginSpotify };
+module.exports = { refreshSpotify };

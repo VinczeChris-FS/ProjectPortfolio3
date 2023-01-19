@@ -2,7 +2,7 @@ import Login from "./components/Login";
 import Search from "./components/Search";
 import "./App.css";
 
-// Get code from the URL returned from Spotify Web API
+// Get code from the URL returned from Spotify Web API after successful login
 const code = new URLSearchParams(window.location.search).get("code");
 
 function App() {
