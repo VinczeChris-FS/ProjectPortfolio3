@@ -32,22 +32,22 @@ Edit Settings > Redirect URI `https://localhost:3000`
 
 ### Create React App
 
+For local React app, first cd into _reactjs_ folder.
+
 ```
+cd reactjs
 npx create-react-app
 ```
 
 ### Install React dependencies
 
 ```
-npm install axios
+npm install axios spotify-web-api-node
 ```
 
 ### To Run React.js (front-end)
 
-To run local React app, first cd into _reactjs_ folder.
-
 ```
-cd reactjs
 npm start
 ```
 
@@ -55,7 +55,10 @@ npm start
 
 ### Initialize Node.js
 
+For local server/API, first cd into _api_ folder.
+
 ```
+cd api
 npm init -y
 ```
 
@@ -73,10 +76,7 @@ npm install install nodemon -D
 
 ### To Run Express (back-end)
 
-To run local server, first cd into _api_ folder.
-
 ```
-cd api
 npm run dev
 ```
 

@@ -19,7 +19,7 @@ const refreshSpotify = (req, res) => {
   spotifyWebApi
     .refreshAccessToken()
     .then((data) => {
-      // console.log("Access token refreshed");
+      console.log("Access token refreshed");
       res.json({
         accessToken: data.body.access_token,
         expiresIn: data.body.expires_in,

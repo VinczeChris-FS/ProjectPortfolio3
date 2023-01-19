@@ -47,6 +47,7 @@ const useAuth = (code) => {
         // Refresh access token
         .then((res) => {
           setAccessToken(res.data.accessToken);
+          // setExpiresIn(61);
           setExpiresIn(res.data.expiresIn);
         })
         .catch(() => {
@@ -89,6 +90,7 @@ const useAuth = (code) => {
         setRefreshToken(res.data[0].refreshToken);
         // setTokenType(res.data[0].tokenType);
         setExpiresIn(res.data[0].expiresIn);
+        // setExpiresIn(61);
       })
       .catch((err) => {
         console.log(err);
