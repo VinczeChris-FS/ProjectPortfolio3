@@ -21,10 +21,10 @@ const Search = ({ code }) => {
   //* useState hooks
   // For search queries
   const [search, setSearch] = useState("");
-  // For array of search queries results
-  const [results, setResults] = useState([]);
-  // Array of search query results objects
-  console.log(results);
+  // For array of search queries results objects
+  const [searchResults, setSearchResults] = useState([]);
+
+  console.log(searchResults);
 
   //* useEffect hooks
   // If no access token, then return nothing
@@ -40,10 +40,20 @@ const Search = ({ code }) => {
   // Otherwise, search based on search query from useState hook
   // Run when search query or access token changes
   useEffect(() => {
-    if (!search) return setResults([]);
+    if (!search) return setSearchResults([]);
     if (!accessToken) return;
     spotifyApi.searchTracks(search).then((res) => {
-      setResults(res.body.tracks.items);
+      // setSearchResults(res.body.tracks.items);
+      // Limit to 4 with slice()
+      // array.slice(startIndex, endIndex not included)
+      // Get artists from items array with map()
+      setSearchResults(
+        res.body.tracks.items.slice(0, 4).map((track) => {
+          return {
+            artist: track.artists[0].name,
+          };
+        })
+      );
     });
   }, [search, accessToken]);
 
