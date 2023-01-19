@@ -22,10 +22,10 @@ const useAuth = (code) => {
       })
       .then((res) => {
         // console.log(res.data);
-        // Store data object in useState hook
+        // Store data in useState hook
         setData(res.data);
-        // console.log(res.data.accessToken);
-        // setAccessToken(res.data.accessToken);
+        // Remove the code from the URL using pushState
+        window.history.pushState({}, null, "/");
       })
       .catch(() => {
         window.location = "/";
@@ -36,15 +36,18 @@ const useAuth = (code) => {
   // Post refresh token to refresh endpoint
   // Run every time the refreshToken or expiresIn changes
   useEffect(() => {
-    // If no refreshToken or expiresIn is set, return nothing
-    if (!refreshToken || expiresIn === 0) {
-      return;
-    }
+    // If no refreshToken or no expiresIn is set, return nothing
+    if (!refreshToken || !expiresIn) return;
     // Refresh one minute before it expires with setInitial
     const interval = setInterval(() => {
       axios
         .post("http://localhost:3001/spotify/v1/refresh", {
           refreshToken,
+        })
+        // Refresh access token
+        .then((res) => {
+          setAccessToken(res.data.accessToken);
+          setExpiresIn(res.data.expiresIn);
         })
         .catch(() => {
           window.location = "/";
@@ -59,48 +62,37 @@ const useAuth = (code) => {
   // Post data to access token endpoint
   // Run every time the access token data changes
   useEffect(() => {
-    // Only if there is data to store
-    if (data) {
-      const addAccessTokenData = async () => {
-        await axios
-          .post("http://localhost:3001/spotify/v1/access_token", {
-            data,
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      };
-      // Call function
-      addAccessTokenData();
-    }
+    // If no data is set, return nothing
+    if (!data) return;
+    axios
+      .post("http://localhost:3001/spotify/v1/access_token", {
+        data,
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [data]);
 
   // Get access token data from database
   // Get data from access token endpoint
   // Run every time the access token data changes
   useEffect(() => {
-    // Only if there is data to get
-    if (data) {
-      const getAccessTokenData = async () => {
-        await axios
-          .get("http://localhost:3001/spotify/v1/access_token")
-          .then((res) => {
-            // Array of access token data returned
-            console.log(res.data);
-            // console.log(res.data[0].accessToken);
-            // Store data in useState hooks
-            setAccessToken(res.data[0].accessToken);
-            setRefreshToken(res.data[0].refreshToken);
-            // setTokenType(res.data[0].tokenType);
-            setExpiresIn(res.data[0].expiresIn);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      };
-      // Call function
-      getAccessTokenData();
-    }
+    // If no data is set, return nothing
+    if (!data) return;
+    axios
+      .get("http://localhost:3001/spotify/v1/access_token")
+      .then((res) => {
+        // Array of access token data returned
+        // console.log(res.data);
+        // Store data in useState hooks
+        setAccessToken(res.data[0].accessToken);
+        setRefreshToken(res.data[0].refreshToken);
+        // setTokenType(res.data[0].tokenType);
+        setExpiresIn(res.data[0].expiresIn);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [data]);
 
   // Return the access token from database to the Search component
