@@ -1,5 +1,7 @@
 # Project and Portfolio III: Web Development - Online
 
+## Spotify Music Search App
+
 Term: 2301 (January 2023)
 
 Instructor: Justin Workman
@@ -82,12 +84,12 @@ npm run dev
 
 The links to the project are as follows:
 
-- [http://localhost:3000](http://localhost:3000) - Link to the frontend application. This is the primary user interface of the Spotify application
+- [http://localhost:3000](http://localhost:3000) - Link to the frontend application. This is the primary user interface of this Spotify music search application
 - [http://localhost:3001](http://localhost:3001) - Link to the backend (Express) API.
 - [http://localhost:3001/spotify/v1](http://localhost:3001/spotify/v1) - Link to the Spotify API middleware.
-- [http://localhost:3001/spotify/v1/status](http://localhost:3001/spotify/v1/status) - Endpoint to check the status of our application's JWT. Returns true if a valid JWT exists. False otherwise.
-- [http://localhost:3001/spotify/v1/login](http://localhost:3001/spotify/v1/login) - Endpoint request a new JWT from Spotify using the authentication workflow
-- [http://localhost:3001/spotify/v1/search](http://localhost:3001/spotify/v1/search) - Endpoint for a general/global search to Spotify. Returns JSON of all results.
+- [http://localhost:3001/spotify/v1/login](http://localhost:3001/spotify/v1/login) - Endpoint to request a new JWT from Spotify using the authentication workflow.
+- [http://localhost:3001/spotify/v1/refresh](http://localhost:3001/spotify/v1/refresh) Endpoint to refresh access token from Spotify.
+- [http://localhost:3001/spotify/v1/access_token](http://localhost:3001/spotify/v1/access_token) Endpoint to store access token from Spotify to database.
 
 ## Resources
 
