@@ -24,6 +24,8 @@ const useAuth = (code) => {
         // console.log(res.data);
         // Store data object in useState hook
         setData(res.data);
+        // console.log(res.data.accessToken);
+        // setAccessToken(res.data.accessToken);
       })
       .catch(() => {
         window.location = "/";
@@ -75,28 +77,31 @@ const useAuth = (code) => {
 
   // Get access token data from database
   // Get data from access token endpoint
-  // Run once
+  // Run every time the access token data changes
   useEffect(() => {
-    const getAccessTokenData = async () => {
-      await axios
-        .get("http://localhost:3001/spotify/v1/access_token")
-        .then((res) => {
-          // Array of access token data returned
-          console.log(res.data);
-          // console.log(res.data[0].accessToken);
-          // Store data in useState hooks
-          setAccessToken(res.data[0].accessToken);
-          setRefreshToken(res.data[0].refreshToken);
-          // setTokenType(res.data[0].tokenType);
-          setExpiresIn(res.data[0].expiresIn);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    // Call function
-    getAccessTokenData();
-  }, []);
+    // Only if there is data to get
+    if (data) {
+      const getAccessTokenData = async () => {
+        await axios
+          .get("http://localhost:3001/spotify/v1/access_token")
+          .then((res) => {
+            // Array of access token data returned
+            console.log(res.data);
+            // console.log(res.data[0].accessToken);
+            // Store data in useState hooks
+            setAccessToken(res.data[0].accessToken);
+            setRefreshToken(res.data[0].refreshToken);
+            // setTokenType(res.data[0].tokenType);
+            setExpiresIn(res.data[0].expiresIn);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+      // Call function
+      getAccessTokenData();
+    }
+  }, [data]);
 
   // Return the access token from database to the Search component
   return accessToken;
