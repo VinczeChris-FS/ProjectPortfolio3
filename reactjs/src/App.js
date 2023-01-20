@@ -7,7 +7,12 @@ const code = new URLSearchParams(window.location.search).get("code");
 
 function App() {
   // If code exists then render Search component, otherwise render Login component
-  return <div>{code ? <Search code={code} /> : <Login />}</div>;
+  return (
+    <div>
+      <header>Header</header>
+      {code ? <Search code={code} /> : <Login />}
+    </div>
+  );
 }
 
 export default App;

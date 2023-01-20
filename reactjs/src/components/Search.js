@@ -21,9 +21,8 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 const Search = ({ code }) => {
-  // Get the access token from useAuth custom hook
+  // Get the access token and data from useAuth custom hook
   const [accessToken, data] = useAuth(code);
-  // console.log(accessToken);
 
   //* useState hooks
   // For search queries
@@ -43,6 +42,9 @@ const Search = ({ code }) => {
     axios
       .post("http://localhost:3001/spotify/v1/access_token", {
         data,
+      })
+      .then((res) => {
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -102,7 +104,6 @@ const Search = ({ code }) => {
   // If there is a search query then render Results component
   return (
     <div>
-      <h1>Search</h1>
       <form>
         <input
           type="search"

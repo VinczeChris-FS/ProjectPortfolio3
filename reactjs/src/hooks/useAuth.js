@@ -59,7 +59,7 @@ const useAuth = (code) => {
   }, [refreshToken, expiresIn]);
 
   // console.log(accessToken);
-  // Return the access token to the Search component
+  // Return the access token and data to the Search component
   return [accessToken, data];
 };
 
