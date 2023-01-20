@@ -11,10 +11,10 @@ const accessTokenSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  tokenType: {
-    type: String,
-    required: true,
-  },
+  // tokenType: {
+  //   type: String,
+  //   required: true,
+  // },
   expiresIn: {
     type: Number,
     required: true,

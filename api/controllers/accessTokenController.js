@@ -7,6 +7,7 @@ const AccessToken = require("../models/AccessToken");
 // GET /api/v1/access_tokens
 const getAccessTokens = async (req, res) => {
   //   res.send("GET access tokens");
+  console.log("GET access tokens");
   try {
     const accessTokens = await AccessToken.find();
     return res.status(200).json(accessTokens);
@@ -19,7 +20,7 @@ const getAccessTokens = async (req, res) => {
 // POST /api/v1/access_tokens
 const addAccessToken = async (req, res) => {
   //   res.send("POST access token");
-  // console.log("POST access token");
+  console.log("POST access token");
   try {
     const accessToken = await AccessToken.create(req.body.data);
     return res.status(201).json(accessToken);

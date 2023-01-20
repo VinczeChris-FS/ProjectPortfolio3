@@ -1,8 +1,14 @@
 //* Search page
 
 import { useState, useEffect } from "react";
+import axios from "axios";
+
 // Custom hook
 import useAuth from "../hooks/useAuth";
+
+// Import components
+import NoResults from "./NoResults";
+import Results from "./Results";
 
 // Spotify Web API Node third party library/package
 // Can be used in React as well as Node.js
@@ -16,23 +22,40 @@ const spotifyApi = new SpotifyWebApi({
 
 const Search = ({ code }) => {
   // Get the access token from useAuth custom hook
-  const accessToken = useAuth(code);
+  const [accessToken, data] = useAuth(code);
+  // console.log(accessToken);
 
   //* useState hooks
   // For search queries
   const [search, setSearch] = useState("");
+  // console.log(search);
   // For array of search queries results objects
   const [searchResults, setSearchResults] = useState([]);
   // View array of returned search results
   console.log(searchResults);
 
   //* useEffect hooks
+  // Store access token data in database
+  // Post data to access token endpoint
+  // Run every time the access token data changes
+  useEffect(() => {
+    if (!data) return;
+    axios
+      .post("http://localhost:3001/spotify/v1/access_token", {
+        data,
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [data]);
+
   // If no access token, then return nothing
   // Otherwise set the access token to use search query
   // Run when access token changes
   useEffect(() => {
     if (!accessToken) return;
     spotifyApi.setAccessToken(accessToken);
+    // console.log("Set access token");
   }, [accessToken]);
 
   // If no search query is present, return empty array
@@ -75,6 +98,8 @@ const Search = ({ code }) => {
   }, [search, accessToken]);
 
   // Search query from onChange event
+  // If there is no search query then render NoResults component
+  // If there is a search query then render Results component
   return (
     <div>
       <h1>Search</h1>
@@ -86,6 +111,19 @@ const Search = ({ code }) => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </form>
+
+      {search === "" ? (
+        <NoResults />
+      ) : (
+        <Results searchResults={searchResults} />
+      )}
+
+      {/* <div>
+        <h2>Artists</h2>
+        {searchResults.map((search) => {
+          return <Artists search={search} key={search.uri} />;
+        })}
+      </div> */}
     </div>
   );
 };

@@ -1,19 +1,18 @@
-//* Custom hook
+//* Custom Hook to get access token data from Spotify Web API
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const useAuth = (code) => {
-  //* useState hooks
+  //* useState Hooks
   const [data, setData] = useState();
   const [accessToken, setAccessToken] = useState("");
   const [refreshToken, setRefreshToken] = useState("");
-  // const [tokenType, setTokenType] = useState("");
   const [expiresIn, setExpiresIn] = useState(0);
 
-  //* useEffect hooks
+  //* useEffect Hooks
   // Authentication to get access token
-  // Post code to login endpoint
+  // Post data to login page
   // Run every time the code changes
   useEffect(() => {
     axios
@@ -21,10 +20,12 @@ const useAuth = (code) => {
         code,
       })
       .then((res) => {
-        // console.log(res.data);
-        // Store data in useState hook
         setData(res.data);
-        // Remove the code from the URL using pushState
+        setAccessToken(res.data.accessToken);
+        setRefreshToken(res.data.refreshToken);
+        // setExpiresIn(61);
+        setExpiresIn(res.data.expiresIn);
+        // Remove the code in the URL with pushState
         window.history.pushState({}, null, "/");
       })
       .catch(() => {
@@ -33,18 +34,16 @@ const useAuth = (code) => {
   }, [code]);
 
   // Refresh token
-  // Post refresh token to refresh endpoint
+  // If no refreshToken or expiresIn is set then return nothing
+  // Only refresh one minute before it expires with setInterval
   // Run every time the refreshToken or expiresIn changes
   useEffect(() => {
-    // If no refreshToken or no expiresIn is set, return nothing
     if (!refreshToken || !expiresIn) return;
-    // Refresh one minute before it expires with setInitial
     const interval = setInterval(() => {
       axios
         .post("http://localhost:3001/spotify/v1/refresh", {
           refreshToken,
         })
-        // Refresh access token
         .then((res) => {
           setAccessToken(res.data.accessToken);
           // setExpiresIn(61);
@@ -59,46 +58,9 @@ const useAuth = (code) => {
     };
   }, [refreshToken, expiresIn]);
 
-  // Store access token data in database
-  // Post data to access token endpoint
-  // Run every time the access token data changes
-  useEffect(() => {
-    // If no data is set, return nothing
-    if (!data) return;
-    axios
-      .post("http://localhost:3001/spotify/v1/access_token", {
-        data,
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [data]);
-
-  // Get access token data from database
-  // Get data from access token endpoint
-  // Run every time the access token data changes
-  useEffect(() => {
-    // If no data is set, return nothing
-    if (!data) return;
-    axios
-      .get("http://localhost:3001/spotify/v1/access_token")
-      .then((res) => {
-        // Array of access token data returned
-        // console.log(res.data);
-        // Store data in useState hooks
-        setAccessToken(res.data[0].accessToken);
-        setRefreshToken(res.data[0].refreshToken);
-        // setTokenType(res.data[0].tokenType);
-        setExpiresIn(res.data[0].expiresIn);
-        // setExpiresIn(61);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [data]);
-
-  // Return the access token from database to the Search component
-  return accessToken;
+  // console.log(accessToken);
+  // Return the access token to the Search component
+  return [accessToken, data];
 };
 
 export default useAuth;

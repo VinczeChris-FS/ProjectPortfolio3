@@ -18,8 +18,7 @@ const loginSpotify = (req, res) => {
   spotifyWebApi
     .authorizationCodeGrant(code)
     .then((data) => {
-      // console.log("Access token granted");
-      // console.log("Data from body: ", data.body);
+      console.log("Access token granted");
       res.json({
         accessToken: data.body.access_token,
         refreshToken: data.body.refresh_token,
