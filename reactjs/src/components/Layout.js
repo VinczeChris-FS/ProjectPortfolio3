@@ -1,9 +1,12 @@
 //* Layout for all pages
 
+import Header from "./Header";
+
 const Layout = ({ children }) => {
   return (
     <div>
-      <main className="main">{children}</main>
+      <Header />
+      <main>{children}</main>
     </div>
   );
 };

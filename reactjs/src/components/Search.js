@@ -3,6 +3,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+// Import React Icon
+import { AiOutlineSearch } from "react-icons/ai";
+
 // Custom hook
 import useAuth from "../hooks/useAuth";
 
@@ -104,7 +107,8 @@ const Search = ({ code }) => {
   // If there is a search query then render Results component
   return (
     <div>
-      <form>
+      <form className="searchform">
+        <AiOutlineSearch style={{ fontSize: "2rem" }} />
         <input
           type="search"
           placeholder="Search for artist, album, or song..."
