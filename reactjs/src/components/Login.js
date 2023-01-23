@@ -6,13 +6,15 @@ const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${process.env
 
 const Login = () => {
   return (
-    <div>
+    <div className="login">
       <h1>Please Login</h1>
       <p>
         In order to search for artists, tracks, or songs you must login to your
         Spotify account
       </p>
-      <a href={AUTH_URL}>Login</a>
+      <a className="login--btn" href={AUTH_URL}>
+        Login
+      </a>
     </div>
   );
 };

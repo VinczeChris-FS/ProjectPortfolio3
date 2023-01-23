@@ -1,3 +1,4 @@
+import Layout from "./components/Layout";
 import Login from "./components/Login";
 import Search from "./components/Search";
 import "./App.css";
@@ -9,8 +10,7 @@ function App() {
   // If code exists then render Search component, otherwise render Login component
   return (
     <div>
-      <header>Header</header>
-      {code ? <Search code={code} /> : <Login />}
+      <Layout>{code ? <Search code={code} /> : <Login />}</Layout>
     </div>
   );
 }

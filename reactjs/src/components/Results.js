@@ -7,7 +7,7 @@ import Songs from "./Songs";
 
 const Results = ({ searchResults }) => {
   return (
-    <div>
+    <div className="results">
       <section>
         <h2>Artists</h2>
         {searchResults.map((search) => {
