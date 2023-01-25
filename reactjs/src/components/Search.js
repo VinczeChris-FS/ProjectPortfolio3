@@ -113,6 +113,7 @@ const Search = ({ code }) => {
           placeholder="Search for artist, album, or song..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          autoFocus
         />
       </form>
 
