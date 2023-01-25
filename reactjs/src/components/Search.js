@@ -70,11 +70,10 @@ const Search = ({ code }) => {
   useEffect(() => {
     if (!search) return setSearchResults([]);
     if (!accessToken) return;
-    spotifyApi.searchTracks(search).then((res) => {
+    // Limit to 10 results with JSON object as an option
+    // Get artists, albums, and songs from items array with map()
+    spotifyApi.searchTracks(search, { limit: 4 }).then((res) => {
       // setSearchResults(res.body.tracks.items);
-      // Limit to 4 with slice()
-      // array.slice(startIndex, endIndex not included)
-      // Get artists, albums, and songs from items array with map()
 
       // Artist: res.body.tracks.items[0].artists[0].name
       // Artist URL: res.body.tracks.items[0].artists[0].external_urls.spotify
@@ -86,7 +85,7 @@ const Search = ({ code }) => {
       // URI for key: res.body.tracks.items[0]uri
 
       setSearchResults(
-        res.body.tracks.items.slice(0, 4).map((item) => {
+        res.body.tracks.items.map((item) => {
           return {
             artist: item.artists[0].name,
             artist_url: item.artists[0].external_urls.spotify,
