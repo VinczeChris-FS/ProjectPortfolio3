@@ -42,7 +42,7 @@ npx create-react-app
 ### Install React dependencies
 
 ```
-npm install axios spotify-web-api-node
+npm install axios spotify-web-api-node react-icons
 ```
 
 ### To Run React.js (front-end)
@@ -100,6 +100,7 @@ The links to the project are as follows:
 - [How to Structure React Projects from Beginner to Advanced](https://blog.webdevsimplified.com/2022-07/react-folder-structure/)
 - [Spotify Web API Node](https://www.npmjs.com/package/spotify-web-api-node)
 - [Spotify Web API Node on GitHub](https://github.com/thelinmichael/spotify-web-api-node#installation)
+- [React Icons](https://react-icons.github.io/react-icons)
 
 ## Misc
 
